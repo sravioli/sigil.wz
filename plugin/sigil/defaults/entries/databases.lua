@@ -32,7 +32,7 @@ return {
   },
   sqlite = {
     name = "SQLite",
-    icon = glyph "dev_sqllite",
+    icon = glyph "dev_sqlite",
     color = "#003B57",
     aliases = { "sqlite3" },
   },

@@ -29,18 +29,18 @@ return {
   },
   gcloud = {
     name = "Google Cloud",
-    icon = glyph "dev_google_cloud_platform",
+    icon = glyph "dev_googlecloud",
     color = "#4285F4",
     aliases = { "google-cloud" },
   },
   helm = {
     name = "Helm",
-    icon = glyph("seti_kubernetes", glyph "linux_docker"),
+    icon = glyph "dev_helm",
     color = "#0F1689",
   },
   kubectl = {
     name = "Kubernetes",
-    icon = glyph("seti_kubernetes", glyph "linux_docker"),
+    icon = glyph("dev_kubernetes", glyph "linux_docker"),
     color = "#326CE5",
     aliases = { "kuberlr", "k9s", "kubernetes" },
   },
@@ -51,7 +51,7 @@ return {
   },
   terraform = {
     name = "Terraform",
-    icon = glyph("md_terraform", glyph "dev_code"),
+    icon = glyph("md_terraform", glyph "cod_code"),
     color = "#844FBA",
     aliases = { "tofu", "opentofu" },
   },

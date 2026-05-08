@@ -139,7 +139,7 @@ return {
   },
   toml = {
     name = "TOML",
-    icon = glyph "seti_toml",
+    icon = glyph "custom_toml",
     color = "#9C4221",
   },
   typescript = {
@@ -155,7 +155,7 @@ return {
   },
   yaml = {
     name = "YAML",
-    icon = glyph "seti_yaml",
+    icon = glyph "dev_yaml",
     color = "#CB171E",
     aliases = { "yml" },
   },

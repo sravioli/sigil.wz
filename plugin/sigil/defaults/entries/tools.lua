@@ -38,7 +38,7 @@ return {
   },
   curl = {
     name = "curl",
-    icon = glyph "mdi_flattr",
+    icon = glyph "md_web",
     color = "#073551",
   },
   direnv = {
@@ -98,7 +98,7 @@ return {
   },
   nancy = {
     name = "Nancy",
-    icon = glyph "dev_nancy",
+    icon = glyph "cod_shield",
     color = "#E95420",
   },
   rg = {
@@ -139,7 +139,7 @@ return {
   },
   wget = {
     name = "wget",
-    icon = glyph "mdi_arrow_down_box",
+    icon = glyph "md_arrow_down_box",
     color = "#1E88E5",
   },
   yazi = {
