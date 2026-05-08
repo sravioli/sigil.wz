@@ -17,19 +17,28 @@ glyphs for labels, color metadata for your own renderer, or raw
 ```lua
 local wezterm = require "wezterm"
 
+-- from git
 local sigil = wezterm.plugin.require "https://github.com/sravioli/sigil.wz"
+
+-- from a local checkout
+local sigil = wezterm.plugin.require("file:///" .. wezterm.config_dir .. "/plugins/sigil.wz")
 ```
 
-For local development:
+### Type annotations
+
+Sigil ships LuaCATS annotations. After installing
+[wezterm-types](https://github.com/DrKJeff16/wezterm-types), annotate the import
+to get completion and type checking:
 
 ```lua
-local sigil = wezterm.plugin.require("file:///" .. wezterm.config_dir .. "/plugins/sigil.wz")
+---@type Sigil.Api
+local sigil = wezterm.plugin.require "https://github.com/sravioli/sigil.wz"
 ```
 
 ## Usage
 
 ```lua
-local sigil = require "plugs.sigil"
+local sigil = wezterm.plugin.require "https://github.com/sravioli/sigil.wz"
 
 local entry = sigil.get "nvim"
 -- { name = "Neovim", icon = "...", color = "#57A143" }
@@ -46,7 +55,7 @@ sigil.icon "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
 sigil.icon "docker-compose"
 ```
 
-## Built-In Entries
+## Built-in entries
 
 Sigil keeps its default registry split by purpose:
 
@@ -63,7 +72,7 @@ The public API does not expose those files directly. They are merged into one
 registry, so `sigil.get "nvim"`, `sigil.get "node"`, and `sigil.get "kubectl"`
 all use the same lookup path.
 
-## Format Items
+## Format items
 
 `items()` returns an array accepted by `wezterm.format()`:
 
@@ -166,7 +175,7 @@ sigil.setup {
 }
 ```
 
-## Custom Entries
+## Custom entries
 
 ```lua
 sigil.add("my-tool", {
@@ -182,8 +191,8 @@ Custom entries are available through `get`, `icon`, `color`, `items`, and
 
 ## Symbols
 
-Sigil also ships reusable UI symbols that came from the original WezTerm config:
-mode icons, separators, battery icons, clock icons, and a few status labels.
+Sigil also ships reusable UI symbols for status bars, tab titles, mode labels,
+separators, battery indicators, and clock indicators.
 
 ```lua
 local folder = sigil.symbol "Folder"
