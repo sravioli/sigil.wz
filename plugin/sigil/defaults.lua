@@ -14,10 +14,20 @@ end
 
 ---@type table<string, Sigil.Entry>
 M.entries = {
+  alacritty = {
+    name = "Alacritty",
+    icon = glyph "cod_terminal",
+    color = "#F46D01",
+  },
   bash = {
     name = "Bash",
     icon = glyph "cod_terminal_bash",
     color = "#89E051",
+  },
+  bat = {
+    name = "bat",
+    icon = glyph "md_file_document",
+    color = "#F5A97F",
   },
   btm = {
     name = "bottom",
@@ -35,6 +45,11 @@ M.entries = {
     icon = glyph "dev_rust",
     color = "#DEA584",
   },
+  clang = {
+    name = "Clang",
+    icon = glyph "dev_c",
+    color = "#A8B9CC",
+  },
   cmd = {
     name = "Command Prompt",
     icon = glyph "md_console_line",
@@ -47,21 +62,58 @@ M.entries = {
     color = "#6CC644",
     aliases = { "github copilot", "🤖" },
   },
+  crystal = {
+    name = "Crystal",
+    icon = glyph "seti_crystal",
+    color = "#000000",
+  },
   curl = {
     name = "curl",
     icon = glyph "mdi_flattr",
     color = "#073551",
   },
+  deno = {
+    name = "Deno",
+    icon = glyph("seti_javascript", glyph "dev_javascript"),
+    color = "#000000",
+  },
   docker = {
     name = "Docker",
     icon = glyph "linux_docker",
     color = "#2496ED",
-    aliases = { "docker-compose", "kubectl", "kuberlr", "lazydocker" },
+    aliases = { "docker-compose", "kubectl", "kuberlr", "lazydocker", "podman" },
+  },
+  dotnet = {
+    name = ".NET",
+    icon = glyph "dev_dotnet",
+    color = "#512BD4",
+    aliases = { "csharp", "c#", "fsharp", "f#" },
+  },
+  emacs = {
+    name = "Emacs",
+    icon = glyph("custom_emacs", glyph "cod_terminal"),
+    color = "#7F5AB6",
+  },
+  fd = {
+    name = "fd",
+    icon = glyph "md_file_find",
+    color = "#89B4FA",
   },
   fish = {
     name = "fish",
     icon = glyph "md_fish",
     color = "#4AAE47",
+  },
+  fzf = {
+    name = "fzf",
+    icon = glyph "cod_search_fuzzy",
+    color = "#40B5A4",
+  },
+  gcc = {
+    name = "GCC",
+    icon = glyph "dev_gnu",
+    color = "#A42E2B",
+    aliases = { "cc", "g++", "c++" },
   },
   gh = {
     name = "GitHub CLI",
@@ -73,6 +125,11 @@ M.entries = {
     icon = glyph "dev_git",
     color = "#F05032",
   },
+  gofmt = {
+    name = "gofmt",
+    icon = glyph "seti_go",
+    color = "#00ADD8",
+  },
   gitui = {
     name = "GitUI",
     icon = glyph "fa_git",
@@ -83,10 +140,49 @@ M.entries = {
     icon = glyph "seti_go",
     color = "#00ADD8",
   },
+  gradle = {
+    name = "Gradle",
+    icon = glyph("seti_gradle", glyph "dev_java"),
+    color = "#02303A",
+  },
+  helix = {
+    name = "Helix",
+    icon = glyph "cod_edit",
+    color = "#A277FF",
+    aliases = { "hx" },
+  },
+  html = {
+    name = "HTML",
+    icon = glyph "dev_html5",
+    color = "#E34F26",
+    aliases = { "html5" },
+  },
+  java = {
+    name = "Java",
+    icon = glyph "dev_java",
+    color = "#E76F00",
+    aliases = { "javac", "java.exe" },
+  },
+  javascript = {
+    name = "JavaScript",
+    icon = glyph "dev_javascript",
+    color = "#F7DF1E",
+    aliases = { "js" },
+  },
+  jq = {
+    name = "jq",
+    icon = glyph "seti_json",
+    color = "#40B5A4",
+  },
   lazygit = {
     name = "lazygit",
     icon = glyph "cod_github",
     color = "#F05032",
+  },
+  less = {
+    name = "Less",
+    icon = glyph "dev_less",
+    color = "#1D365D",
   },
   lua = {
     name = "Lua",
@@ -98,10 +194,44 @@ M.entries = {
     icon = glyph "seti_makefile",
     color = "#427819",
   },
+  markdown = {
+    name = "Markdown",
+    icon = glyph "dev_markdown",
+    color = "#083FA1",
+    aliases = { "md" },
+  },
+  mongo = {
+    name = "MongoDB",
+    icon = glyph "dev_mongodb",
+    color = "#47A248",
+    aliases = { "mongosh", "mongodb" },
+  },
+  mysql = {
+    name = "MySQL",
+    icon = glyph "dev_mysql",
+    color = "#4479A1",
+  },
+  nancy = {
+    name = "Nancy",
+    icon = glyph "dev_nancy",
+    color = "#E95420",
+  },
+  nginx = {
+    name = "NGINX",
+    icon = glyph "dev_nginx",
+    color = "#009639",
+  },
   node = {
     name = "Node.js",
     icon = glyph "md_nodejs",
     color = "#339933",
+    aliases = { "node.exe", "nodejs" },
+  },
+  npm = {
+    name = "npm",
+    icon = glyph "dev_npm",
+    color = "#CB3837",
+    aliases = { "npx" },
   },
   nvim = {
     name = "Neovim",
@@ -120,6 +250,17 @@ M.entries = {
     icon = glyph "seti_perl",
     color = "#39457E",
   },
+  php = {
+    name = "PHP",
+    icon = glyph "dev_php",
+    color = "#777BB4",
+    aliases = { "composer" },
+  },
+  pnpm = {
+    name = "pnpm",
+    icon = glyph("md_package_variant_closed", glyph "dev_npm"),
+    color = "#F69220",
+  },
   psql = {
     name = "PostgreSQL",
     icon = glyph "dev_postgresql",
@@ -136,25 +277,82 @@ M.entries = {
     icon = glyph "seti_python",
     color = "#3776AB",
   },
+  redis = {
+    name = "Redis",
+    icon = glyph "dev_redis",
+    color = "#DC382D",
+  },
+  rg = {
+    name = "ripgrep",
+    icon = glyph "md_magnify",
+    color = "#F5A97F",
+    aliases = { "ripgrep" },
+  },
+  rust = {
+    name = "Rust",
+    icon = glyph "dev_rust",
+    color = "#DEA584",
+    aliases = { "rustc", "rustup" },
+  },
   ruby = {
     name = "Ruby",
     icon = glyph "cod_ruby",
     color = "#CC342D",
+  },
+  sass = {
+    name = "Sass",
+    icon = glyph "dev_sass",
+    color = "#CC6699",
+    aliases = { "scss" },
+  },
+  sqlite = {
+    name = "SQLite",
+    icon = glyph "dev_sqllite",
+    color = "#003B57",
+    aliases = { "sqlite3" },
+  },
+  ssh = {
+    name = "SSH",
+    icon = glyph "md_ssh",
+    color = "#A6E3A1",
   },
   sudo = {
     name = "sudo",
     icon = glyph "fa_hashtag",
     color = "#E95420",
   },
+  terraform = {
+    name = "Terraform",
+    icon = glyph("md_terraform", glyph "dev_code"),
+    color = "#844FBA",
+    aliases = { "tofu", "opentofu" },
+  },
   topgrade = {
     name = "Topgrade",
     icon = glyph "md_rocket_launch",
     color = "#7AA2F7",
   },
+  typescript = {
+    name = "TypeScript",
+    icon = glyph("seti_typescript", glyph "dev_javascript"),
+    color = "#3178C6",
+    aliases = { "ts" },
+  },
   vim = {
     name = "Vim",
     icon = glyph "dev_vim",
     color = "#019833",
+  },
+  vscode = {
+    name = "Visual Studio Code",
+    icon = glyph "dev_visualstudio",
+    color = "#007ACC",
+    aliases = { "code", "code.exe" },
+  },
+  wezterm = {
+    name = "WezTerm",
+    icon = glyph "cod_terminal",
+    color = "#7AA2F7",
   },
   wget = {
     name = "wget",
@@ -165,6 +363,11 @@ M.entries = {
     name = "Yazi",
     icon = glyph "md_duck",
     color = "#FFCC66",
+  },
+  yarn = {
+    name = "Yarn",
+    icon = glyph("seti_yarn", glyph "dev_npm"),
+    color = "#2C8EBB",
   },
   zsh = {
     name = "Zsh",
