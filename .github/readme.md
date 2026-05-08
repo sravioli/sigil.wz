@@ -46,6 +46,23 @@ sigil.icon "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
 sigil.icon "docker-compose"
 ```
 
+## Built-In Entries
+
+Sigil keeps its default registry split by purpose:
+
+- `terminals`: shells, terminal emulators, and remote session tools
+- `editors`: Vim, Neovim, Helix, VS Code, and similar editors
+- `languages`: language and file-format identities
+- `runtimes`: executable runtimes such as Node, Deno, and Bun
+- `package_managers`: build tools and dependency managers
+- `databases`: database CLIs and engines
+- `infra`: containers, orchestration, cloud, and provisioning tools
+- `tools`: general command-line utilities
+
+The public API does not expose those files directly. They are merged into one
+registry, so `sigil.get "nvim"`, `sigil.get "node"`, and `sigil.get "kubectl"`
+all use the same lookup path.
+
 ## Format Items
 
 `items()` returns an array accepted by `wezterm.format()`:
