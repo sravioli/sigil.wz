@@ -14,11 +14,28 @@ return {
     icon = glyph "seti_crystal",
     color = "#000000",
   },
+  clojure = {
+    name = "Clojure",
+    icon = glyph "dev_clojure",
+    color = "#5881D8",
+    aliases = { "clj", "clojurescript", "cljs" },
+  },
+  cpp = {
+    name = "C++",
+    icon = glyph "custom_cpp",
+    color = "#00599C",
+    aliases = { "cplusplus" },
+  },
   css = {
     name = "CSS",
     icon = glyph "dev_css3",
     color = "#1572B6",
     aliases = { "css3" },
+  },
+  dart = {
+    name = "Dart",
+    icon = glyph "dev_dart",
+    color = "#0175C2",
   },
   dotnet = {
     name = ".NET",
@@ -78,6 +95,11 @@ return {
     icon = glyph "seti_json",
     color = "#F7DF1E",
   },
+  julia = {
+    name = "Julia",
+    icon = glyph "dev_julia",
+    color = "#9558B2",
+  },
   kotlin = {
     name = "Kotlin",
     icon = glyph "seti_kotlin",
@@ -95,6 +117,16 @@ return {
     color = "#083FA1",
     aliases = { "md" },
   },
+  nim = {
+    name = "Nim",
+    icon = glyph "dev_nim",
+    color = "#FFE953",
+  },
+  ocaml = {
+    name = "OCaml",
+    icon = glyph "dev_ocaml",
+    color = "#EC6813",
+  },
   perl = {
     name = "Perl",
     icon = glyph "seti_perl",
@@ -109,6 +141,12 @@ return {
     name = "Python",
     icon = glyph "seti_python",
     color = "#3776AB",
+  },
+  r = {
+    name = "R",
+    icon = glyph "dev_r",
+    color = "#276DC3",
+    aliases = { "r.exe", "rscript", "rscript.exe" },
   },
   ruby = {
     name = "Ruby",
@@ -131,6 +169,12 @@ return {
     name = "Scala",
     icon = glyph "dev_scala",
     color = "#DC322F",
+  },
+  solidity = {
+    name = "Solidity",
+    icon = glyph "dev_solidity",
+    color = "#363636",
+    aliases = { "solc" },
   },
   swift = {
     name = "Swift",

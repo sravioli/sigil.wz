@@ -6,14 +6,19 @@ local glyph = require "sigil.defaults.glyph"
 return {
   bun = {
     name = "Bun",
-    icon = glyph("seti_javascript", glyph "dev_javascript"),
+    icon = glyph "dev_bun",
     color = "#F9F1E1",
     aliases = { "bunx" },
   },
   deno = {
     name = "Deno",
-    icon = glyph("seti_javascript", glyph "dev_javascript"),
+    icon = glyph "dev_denojs",
     color = "#000000",
+  },
+  electron = {
+    name = "Electron",
+    icon = glyph "custom_electron",
+    color = "#47848F",
   },
   node = {
     name = "Node.js",

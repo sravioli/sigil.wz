@@ -4,6 +4,12 @@ local glyph = require "sigil.defaults.glyph"
 
 ---@type table<string, Sigil.Entry>
 return {
+  brew = {
+    name = "Homebrew",
+    icon = glyph "dev_homebrew",
+    color = "#FBB040",
+    aliases = { "homebrew" },
+  },
   cargo = {
     name = "Cargo",
     icon = glyph "dev_rust",
@@ -35,11 +41,22 @@ return {
     icon = glyph "seti_makefile",
     color = "#427819",
   },
+  maven = {
+    name = "Maven",
+    icon = glyph "dev_maven",
+    color = "#C71A36",
+    aliases = { "mvn" },
+  },
   npm = {
     name = "npm",
     icon = glyph "dev_npm",
     color = "#CB3837",
     aliases = { "npx" },
+  },
+  nuget = {
+    name = "NuGet",
+    icon = glyph "dev_nuget",
+    color = "#004880",
   },
   pacman = {
     name = "Pacman",

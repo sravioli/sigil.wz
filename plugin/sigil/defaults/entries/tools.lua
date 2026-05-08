@@ -46,6 +46,11 @@ return {
     icon = glyph "md_folder_key",
     color = "#40B5A4",
   },
+  eslint = {
+    name = "ESLint",
+    icon = glyph "dev_eslint",
+    color = "#4B32C3",
+  },
   fd = {
     name = "fd",
     icon = glyph "md_file_find",
@@ -81,6 +86,11 @@ return {
     icon = glyph "seti_json",
     color = "#40B5A4",
   },
+  jest = {
+    name = "Jest",
+    icon = glyph "dev_jest",
+    color = "#C21325",
+  },
   just = {
     name = "just",
     icon = glyph "seti_makefile",
@@ -101,11 +111,21 @@ return {
     icon = glyph "cod_shield",
     color = "#E95420",
   },
+  prettier = {
+    name = "Prettier",
+    icon = glyph "custom_prettier",
+    color = "#F7B93E",
+  },
   rg = {
     name = "ripgrep",
     icon = glyph "md_magnify",
     color = "#F5A97F",
     aliases = { "ripgrep" },
+  },
+  rollup = {
+    name = "Rollup",
+    icon = glyph "dev_rollup",
+    color = "#EC4A3F",
   },
   sed = {
     name = "sed",
@@ -117,10 +137,21 @@ return {
     icon = glyph "md_rocket_launch",
     color = "#DD0B78",
   },
+  storybook = {
+    name = "Storybook",
+    icon = glyph "dev_storybook",
+    color = "#FF4785",
+  },
   sudo = {
     name = "sudo",
     icon = glyph "fa_hashtag",
     color = "#E95420",
+  },
+  tailwind = {
+    name = "Tailwind CSS",
+    icon = glyph "dev_tailwindcss",
+    color = "#06B6D4",
+    aliases = { "tailwindcss" },
   },
   tar = {
     name = "tar",
@@ -136,6 +167,21 @@ return {
     name = "unzip",
     icon = glyph "md_archive_arrow_down",
     color = "#CBA6F7",
+  },
+  vite = {
+    name = "Vite",
+    icon = glyph "dev_vite",
+    color = "#646CFF",
+  },
+  vitest = {
+    name = "Vitest",
+    icon = glyph "dev_vitest",
+    color = "#6E9F18",
+  },
+  webpack = {
+    name = "Webpack",
+    icon = glyph "dev_webpack",
+    color = "#8DD6F9",
   },
   wget = {
     name = "wget",
