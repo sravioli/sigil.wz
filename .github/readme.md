@@ -106,8 +106,9 @@ Supported padding values are `false`, `true`, `"left"`, `"right"`, and
 Sigil pairs well with [ribbon.wz](https://github.com/sravioli/ribbon.wz):
 
 ```lua
-local ribbon = require "plugs.ribbon"
-local sigil = require "plugs.sigil"
+local wezterm = require "wezterm"
+local ribbon = wezterm.plugin.require "https://github.com/sravioli/ribbon.wz"
+local sigil = wezterm.plugin.require "https://github.com/sravioli/sigil.wz"
 
 local title = ribbon:new "Tab"
 title
