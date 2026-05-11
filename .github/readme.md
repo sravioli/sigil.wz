@@ -1,6 +1,6 @@
 # sigil.wz
 
-<!-- [![Awesome](https://awesome.re/mentioned-badge.svg)](https://github.com/michaelbrusegard/awesome-wezterm) -->
+[![Awesome](https://awesome.re/mentioned-badge.svg)](https://github.com/michaelbrusegard/awesome-wezterm)
 [![Tests](https://img.shields.io/github/actions/workflow/status/sravioli/sigil.wz/tests.yaml?label=Tests&logo=Lua)](https://github.com/sravioli/sigil.wz/actions?workflow=tests)
 [![Lint](https://img.shields.io/github/actions/workflow/status/sravioli/sigil.wz/lint.yaml?label=Lint&logo=Lua)](https://github.com/sravioli/sigil.wz/actions?workflow=lint)
 [![Coverage](https://img.shields.io/coverallsCoverage/github/sravioli/sigil.wz?label=Coverage&logo=coveralls)](https://coveralls.io/github/sravioli/sigil.wz)
