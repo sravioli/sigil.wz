@@ -24,6 +24,9 @@ local sigil = wezterm.plugin.require "https://github.com/sravioli/sigil.wz"
 local sigil = wezterm.plugin.require("file:///" .. wezterm.config_dir .. "/plugins/sigil.wz")
 ```
 
+Sigil loads [`warp.wz`](https://github.com/sravioli/warp.wz) automatically for
+string, path, and table helpers.
+
 <!--
 ### Type annotations
 
@@ -142,6 +145,8 @@ sigil.setup {
       aliases = { "neovim", "editor" },
     },
   },
+
+  symbols = {},
 }
 ```
 
@@ -178,6 +183,24 @@ sigil.setup {
 }
 ```
 
+### `symbols`
+
+Use `symbols` to override or add reusable UI symbols without touching the
+semantic icon registry. Dotted paths passed to `sigil.symbol()` are resolved
+against the built-in symbols merged with this table.
+
+```lua
+sigil.setup {
+  symbols = {
+    Sep = {
+      tb = {
+        right = "",
+      },
+    },
+  },
+}
+```
+
 ## Custom entries
 
 ```lua
@@ -205,6 +228,21 @@ local symbols = sigil.symbols()
 
 These are kept separate from the semantic registry because they describe UI
 parts rather than programs.
+
+## API
+
+| Function | Description |
+| --- | --- |
+| `sigil.setup(opts?)` | Merge user options with Sigil defaults. |
+| `sigil.add(key, entry)` | Register or replace one semantic entry. |
+| `sigil.get(key, opts?)` | Return the entry for a key or alias. |
+| `sigil.icon(key, opts?)` | Return only the icon for a key or alias. |
+| `sigil.color(key, opts?)` | Return only the color for a key or alias. |
+| `sigil.items(key, opts?)` | Return `wezterm.format`-compatible items. |
+| `sigil.format(key, opts?)` | Render an icon with `wezterm.format`. |
+| `sigil.symbol(path)` | Return one UI symbol by dotted path. |
+| `sigil.symbols()` | Return all configured UI symbols. |
+| `sigil.all()` | Return all registered semantic entries. |
 
 ## License
 
