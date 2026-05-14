@@ -85,13 +85,13 @@ M.time = {
   end,
 }
 
--- wezterm.config_dir stub — deliberately NOT a temp dir, so
+-- wezterm.config_dir stub: deliberately NOT a temp dir, so
 -- that file-sink tests writing to %TEMP% are not relocated.
 -- selene: allow(incorrect_standard_library_use)
 local sep = package.config:sub(1, 1)
 M.config_dir = sep == "\\" and "C:\\wezterm_mock_config_dir" or "/wezterm_mock_config_dir"
 
--- wezterm.GLOBAL stub — survives config reloads, wiped on process exit.
+-- wezterm.GLOBAL stub: survives config reloads, wiped on process exit.
 M.GLOBAL = {}
 
 -- wezterm.plugin stub
