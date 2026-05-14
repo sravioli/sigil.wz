@@ -1,5 +1,7 @@
 ---@module "sigil.config"
 
+local tbl = require("sigil.deps").warp.table
+
 ---@class Sigil.Config
 ---@field fallback Sigil.FallbackConfig
 ---@field formatting Sigil.FormattingConfig
@@ -38,50 +40,11 @@ local defaults = {
 
 local current
 
----@param value any
----@return boolean
-local function is_array(value)
-  return type(value) == "table" and (#value > 0 or next(value) == nil)
-end
-
----@param value any
----@return any
-local function deepcopy(value)
-  if type(value) ~= "table" then
-    return value
-  end
-
-  local copy = {}
-  for key, child in pairs(value) do
-    copy[key] = deepcopy(child)
-  end
-  return copy
-end
-
----@param dst table
----@param src table|nil
----@return table
-local function merge(dst, src)
-  if type(src) ~= "table" then
-    return dst
-  end
-
-  for key, value in pairs(src) do
-    if type(value) == "table" and type(dst[key]) == "table" and not is_array(value) then
-      merge(dst[key], value)
-    else
-      dst[key] = deepcopy(value)
-    end
-  end
-
-  return dst
-end
-
 ---Configure Sigil.
 ---@param opts? table
 ---@return Sigil.Config
 function M.setup(opts)
-  current = merge(deepcopy(defaults), opts)
+  current = tbl.merge("force", tbl.deepcopy(defaults), tbl.deepcopy(opts or {}))
   return current
 end
 
@@ -89,7 +52,7 @@ end
 ---@return Sigil.Config
 function M.get()
   if not current then
-    current = deepcopy(defaults)
+    current = tbl.deepcopy(defaults)
   end
   return current
 end
@@ -97,10 +60,7 @@ end
 ---Return a copy of the default configuration.
 ---@return Sigil.Config
 function M.defaults()
-  return deepcopy(defaults)
+  return tbl.deepcopy(defaults)
 end
-
-M.deepcopy = deepcopy
-M.merge = merge
 
 return M

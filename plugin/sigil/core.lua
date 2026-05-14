@@ -3,6 +3,7 @@
 local config = require "sigil.config"
 local defaults = require "sigil.defaults"
 local registry = require "sigil.registry"
+local tbl = require("sigil.deps").warp.table
 local wezterm = require "wezterm" --[[@as Wezterm]]
 
 local M = {
@@ -159,14 +160,19 @@ end
 ---@param path string
 ---@return any
 function M.symbol(path)
-  local symbols = config.merge(config.deepcopy(defaults.symbols), config.get().symbols)
+  local symbols =
+    tbl.merge("force", tbl.deepcopy(defaults.symbols), tbl.deepcopy(config.get().symbols or {}))
   return get_path(path, symbols)
 end
 
 ---Return all configured symbols.
 ---@return table
 function M.symbols()
-  return config.merge(config.deepcopy(defaults.symbols), config.get().symbols)
+  return tbl.merge(
+    "force",
+    tbl.deepcopy(defaults.symbols),
+    tbl.deepcopy(config.get().symbols or {})
+  )
 end
 
 ---Return all registered entries.

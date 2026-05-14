@@ -1,6 +1,9 @@
 ---@module "sigil.registry"
 
-local config = require "sigil.config"
+local deps = require "sigil.deps"
+local filesystem = deps.warp.filesystem
+local str = deps.warp.string
+local tbl = deps.warp.table
 
 ---@class Sigil.Entry
 ---@field key? string
@@ -17,15 +20,13 @@ local M = {
 ---@param value string
 ---@return string
 local function basename(value)
-  local normalized = value:gsub("/", "\\")
-  return normalized:match "([^\\]+)$" or normalized
+  return filesystem.basename(value)
 end
 
 ---@param key any
 ---@return string
 function M.normalize(key)
-  key = tostring(key or "")
-  key = key:match "^%s*(.-)%s*$"
+  key = str.trim(tostring(key or ""))
   key = basename(key)
   return key:lower()
 end
@@ -34,7 +35,7 @@ end
 ---@param entry Sigil.Entry
 function M.add(key, entry)
   local normalized = M.normalize(key)
-  local copy = config.deepcopy(entry)
+  local copy = tbl.deepcopy(entry)
   copy.key = copy.key or normalized
   M.entries[normalized] = copy
   M.aliases[normalized] = normalized
@@ -60,7 +61,7 @@ function M.reset(entries, overrides)
     for key, override in pairs(overrides) do
       local normalized = M.normalize(key)
       local base = M.entries[M.aliases[normalized] or normalized] or {}
-      M.add(key, config.merge(config.deepcopy(base), override))
+      M.add(key, tbl.merge("force", tbl.deepcopy(base), tbl.deepcopy(override or {})))
     end
   end
 end
@@ -76,12 +77,12 @@ function M.get(key)
     return nil
   end
 
-  return config.deepcopy(entry)
+  return tbl.deepcopy(entry)
 end
 
 ---@return table<string, Sigil.Entry>
 function M.all()
-  return config.deepcopy(M.entries)
+  return tbl.deepcopy(M.entries)
 end
 
 return M

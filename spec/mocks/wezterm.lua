@@ -94,10 +94,78 @@ M.config_dir = sep == "\\" and "C:\\wezterm_mock_config_dir" or "/wezterm_mock_c
 -- wezterm.GLOBAL stub: survives config reloads, wiped on process exit.
 M.GLOBAL = {}
 
+local function is_list(value)
+  if type(value) ~= "table" then
+    return false
+  end
+  local n = #value
+  local count = 0
+  for _ in pairs(value) do
+    count = count + 1
+  end
+  return count == n
+end
+
+local function deepcopy(value)
+  if type(value) ~= "table" then
+    return value
+  end
+  local copy = {}
+  for key, child in pairs(value) do
+    copy[key] = deepcopy(child)
+  end
+  return copy
+end
+
+local function merge(_, dst, ...)
+  for i = 1, select("#", ...) do
+    local src = select(i, ...)
+    if type(src) == "table" then
+      for key, value in pairs(src) do
+        if
+          type(value) == "table"
+          and type(dst[key]) == "table"
+          and not is_list(value)
+          and not is_list(dst[key])
+        then
+          merge("force", dst[key], value)
+        else
+          dst[key] = value
+        end
+      end
+    end
+  end
+  return dst
+end
+
+local warp = {
+  filesystem = {
+    basename = function(path)
+      local trimmed = tostring(path or ""):gsub("[/\\]*$", "")
+      return trimmed:match "([^/\\]+)$" or trimmed
+    end,
+  },
+  string = {
+    trim = function(value)
+      return (tostring(value or ""):gsub("^%s*(.-)%s*$", "%1"))
+    end,
+  },
+  table = {
+    deepcopy = deepcopy,
+    merge = merge,
+  },
+}
+
 -- wezterm.plugin stub
 M.plugin = {
   list = function()
     return {}
+  end,
+  require = function(url)
+    if tostring(url):find("warp.wz", 1, true) then
+      return warp
+    end
+    error("unknown plugin: " .. tostring(url))
   end,
 }
 
