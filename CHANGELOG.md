@@ -2,6 +2,18 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [1.0.1](https://github.com/sravioli/sigil.wz/compare/03f45cd7df6b71c5adebc8b87d84544ca172d248..1.0.1) - 2026-05-14
+#### Documentation
+- (**github**) add pull request templates - ([09d4eac](https://github.com/sravioli/sigil.wz/commit/09d4eac9fd90127d274d6d45949f127fb5e59666)) - sravioli
+- (**github**) polish issue templates - ([9278692](https://github.com/sravioli/sigil.wz/commit/9278692805df9d0fe04af528fbebd78810d7d189)) - sravioli
+- (**lua**) polish comment wording - ([cc182e9](https://github.com/sravioli/sigil.wz/commit/cc182e9d3113eec4dad685b5eef59c8e8c73e310)) - sravioli
+- (**readme**) align documentation with implementation - ([f5dc225](https://github.com/sravioli/sigil.wz/commit/f5dc22531bb8205f6e1ead352890613d7a09af58)) - sravioli
+- (**readme**) restore Awesome WezTerm badge - ([03f45cd](https://github.com/sravioli/sigil.wz/commit/03f45cd7df6b71c5adebc8b87d84544ca172d248)) - sravioli
+#### Refactoring
+- introduce deps.lua and delegate utilities to warp.wz - ([a4c183b](https://github.com/sravioli/sigil.wz/commit/a4c183bf228c8bddbd1239b280a3d4ab4583032b)) - sravioli
+
+- - -
+
 ## [1.0.0](https://github.com/sravioli/sigil.wz/compare/facf019e771c31b3dda3c69fee230a9da2f9fc27..1.0.0) - 2026-05-10
 #### Features
 - (**defaults**) expand icon registry coverage - ([f7db68d](https://github.com/sravioli/sigil.wz/commit/f7db68d944144d7bea7b60eb9ed0cbb6acd322ac)) - sravioli
