@@ -234,6 +234,8 @@ parts rather than programs.
 | Function | Description |
 | --- | --- |
 | `sigil.setup(opts?)` | Merge user options with Sigil defaults. |
+| `sigil.config.get()` | Return the active configuration. |
+| `sigil.config.defaults()` | Return a copy of the default configuration. |
 | `sigil.add(key, entry)` | Register or replace one semantic entry. |
 | `sigil.get(key, opts?)` | Return the entry for a key or alias. |
 | `sigil.icon(key, opts?)` | Return only the icon for a key or alias. |
