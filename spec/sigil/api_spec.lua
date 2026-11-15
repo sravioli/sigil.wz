@@ -161,4 +161,14 @@ describe("sigil.wz", function()
     assert.are.equal("F", sigil.symbol "Folder")
     assert.are.equal(">", sigil.symbol "Sep.tb.right")
   end)
+
+  it("refreshes cached symbols after setup and copies table results", function()
+    assert.are.equal("nf:md_folder", sigil.symbol "Folder")
+    sigil.setup { symbols = { Folder = "F" } }
+    assert.are.equal("F", sigil.symbol "Folder")
+
+    local tb = sigil.symbol "Sep.tb"
+    tb.right = "changed"
+    assert.are.equal("nf:ple_lower_left_triangle", sigil.symbol "Sep.tb.right")
+  end)
 end)
