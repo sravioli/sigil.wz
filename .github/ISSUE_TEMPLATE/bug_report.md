@@ -23,19 +23,19 @@ skip this section.
 
 - **OS**: (e.g. Windows 11, macOS 15.4, Ubuntu 24.04)
 - **WezTerm version**: (e.g. `20240203-110809-5046fc22`)
-- **memo.wz version/commit**: (e.g. `v1.0.0` or commit hash)
+- **sigil.wz version/commit**: (e.g. `v1.0.0` or commit hash)
 - **Installation method**: git (`wezterm.plugin.require`) / local checkout
 - **Lua version** (if known):
 
 ## Setup
 
-Provide your memo.wz configuration and usage code so the issue can be
+Provide your sigil.wz configuration and usage code so the issue can be
 reproduced.
 
 ```lua
 -- Example:
--- memo.cache.configure { ttl = { default = 60 }, stats = true }
--- memo.cache.compute("key", function() return expensive() end)
+-- sigil.setup { overrides = { nvim = { icon = "N" } } }
+-- sigil.icon("nvim")
 ```
 
 ## Steps to reproduce
@@ -54,8 +54,7 @@ Describe what you expected to happen instead.
 
 ## Proof (optional)
 
-Attach relevant output: WezTerm debug overlay messages, file sink output,
-`memory:to_string()` dumps, screenshots, or stack traces.
+Attach relevant output: WezTerm debug overlay messages, the entry returned by `sigil.get`, screenshots, or stack traces.
 
 ```text
 -- paste logs or output here

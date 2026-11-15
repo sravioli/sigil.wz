@@ -38,7 +38,7 @@ commit.
 - [ ] Existing icon keys and aliases remain compatible.
 - [ ] Required checks pass:
   - [ ] `busted --verbose`
-  - [ ] `luacheck .`
-  - [ ] `stylua --check .`
-  - [ ] `selene --display-style=quiet .`
+  - [ ] `luacheck plugin spec`
+  - [ ] `stylua --check plugin spec`
+  - [ ] `selene --display-style=quiet plugin`
 
