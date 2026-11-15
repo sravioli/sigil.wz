@@ -19,5 +19,13 @@ local function require_plugin(module, url)
 end
 
 M.warp = require_plugin("warp.api", "https://github.com/sravioli/warp.wz")
+local warden
+
+---Loaded on first use, so users who set `validate = false` never pull warden.
+---@return Warden
+function M.warden()
+  warden = warden or require_plugin("warden.api", "https://github.com/sravioli/warden.wz")
+  return warden
+end
 
 return M
