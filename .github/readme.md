@@ -20,9 +20,9 @@ catalog supplies folders, separators, mode labels, battery levels, and clocks.
 ### Requirements
 
 Requires **WezTerm [`20230320-124340-559cb7b0`](https://wezterm.org/config/lua/wezterm.plugin/require.html)
-or newer** and Git. Automatically loads [warp.wz](https://github.com/sravioli/warp.wz),
-preferring local API modules; dependency failure raises.
-
+or newer** and Git. Automatically loads [warp.wz](https://github.com/sravioli/warp.wz) and
+[warden.wz](https://github.com/sravioli/warden.wz), preferring local API
+modules; dependency failure raises. Invalid options are logged and ignored.
 Use a suitable font for Nerd Font glyphs; unavailable glyph keys fall back
 to text. Ribbon is an optional consumer, not a dependency.
 
@@ -127,11 +127,23 @@ sigil.setup {
 | `formatting.padding` | `boolean\|"left"\|"right"\|"both"` | `false` | Surround icons with spaces; `true` means `"both"`. |
 | `overrides` | `table<string, Sigil.Entry>` | `{}` | Partial entries merged into defaults; unknown keys can introduce entries with a required `icon`. |
 | `symbols` | `table<string, any>` | `{}` | Nested overrides/additions to the separate symbol catalog. |
+| `validate` | `boolean` | `true` | Check options with [warden.wz](https://github.com/sravioli/warden.wz). Set `false` to skip checks and never load warden. |
 
 The full entry shape is in [registry.lua](../plugin/sigil/registry.lua).
 Per-call `get`/`icon`/`color` options accept `fallback?`.
 `items`/`format` also accept `padding?` and `reset?`, using the same
 types as the global formatting options.
+
+#### Option validation
+
+Options are checked against a schema when you call setup. Invalid fields are logged and ignored, and the rest still apply; unknown keys in fixed sections log a warning.
+Set `validate = false` once your configuration is stable: warden is then never
+downloaded or loaded, and the options are used exactly as written, so typos and
+wrong types go unnoticed.
+
+```lua
+sigil.setup { validate = false }
+```
 
 ### Behavior and precedence
 
@@ -217,7 +229,7 @@ local sigil = wezterm.plugin.require(
 )
 ```
 
-Warp must also be available through the loader or `package.path`.
+Warp and Warden must also be available through the loader or `package.path`.
 
 ### Editor support
 
@@ -239,14 +251,13 @@ From the repository root, with Lua 5.4 and the named tools installed:
 
 ```sh
 busted --verbose
-luacheck plugin
+luacheck plugin spec
 selene --display-style=quiet plugin
-stylua --check .
+stylua --check plugin spec
 ```
 
-Specs mock WezTerm and Warp. The [contribution guide](contributing.md) still
-contains copied Memo-specific prose; use this repository's implementation
-and checks. Use Conventional Commits.
+Specs mock WezTerm and Warp and load a sibling `../warden.wz` checkout. See the
+[contribution guide](contributing.md) and use Conventional Commits.
 
 ## License
 
