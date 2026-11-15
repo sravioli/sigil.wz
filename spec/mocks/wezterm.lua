@@ -6,6 +6,11 @@ if package.loaded["wezterm"] then
   return package.loaded["wezterm"]
 end
 
+-- warden is a real sibling checkout, so specs exercise actual validation.
+-- selene: allow(incorrect_standard_library_use)
+local base = "../warden.wz/plugin/"
+package.path = base .. "?.lua;" .. base .. "?/init.lua;" .. package.path
+
 local M = {}
 
 -- Capture calls for assertion

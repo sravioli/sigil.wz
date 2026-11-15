@@ -171,4 +171,62 @@ describe("sigil.wz", function()
     tb.right = "changed"
     assert.are.equal("nf:ple_lower_left_triangle", sigil.symbol "Sep.tb.right")
   end)
+
+  describe("option validation", function()
+    local function logged(fn_name)
+      local n = 0
+      for _, call in ipairs(wezterm._calls) do
+        if call.fn == fn_name then
+          n = n + 1
+        end
+      end
+      return n
+    end
+
+    it("logs a wrong type and keeps the default and the valid fields", function()
+      sigil.setup { fallback = { enabled = "yes", icon = "!" } }
+
+      local fallback = sigil.config.get().fallback
+      assert.is_true(fallback.enabled)
+      assert.are.equal("!", fallback.icon)
+      assert.are.equal(1, logged "log_error")
+    end)
+
+    it("warns about unknown keys in fixed sections", function()
+      sigil.setup { formatting = { pading = "left" } }
+
+      assert.are.equal(1, logged "log_warn")
+      assert.is_false(sigil.config.get().formatting.padding)
+    end)
+
+    it("still extends defaults with custom symbols", function()
+      sigil.setup { symbols = { mything = { icon = "x" } } }
+
+      assert.are.equal(0, logged "log_error" + logged "log_warn")
+      assert.is_not_nil(sigil.config.get().symbols.mything)
+      assert.are.equal("Neovim", sigil.get("nvim").name)
+    end)
+
+    it("ignores a non-table options value", function()
+      assert.has_no.errors(function()
+        sigil.setup "oops"
+      end)
+    end)
+
+    it("skips validation and never loads warden when validate = false", function()
+      local deps = require "sigil.deps"
+      local real = deps.warden
+      finally(function()
+        deps.warden = real
+      end)
+      deps.warden = function()
+        error "warden loaded"
+      end
+
+      local cfg = sigil.config.setup { validate = false, fallback = { enabled = "yes" } }
+
+      assert.are.equal("yes", cfg.fallback.enabled)
+      assert.are.equal(0, logged "log_error" + logged "log_warn")
+    end)
+  end)
 end)
