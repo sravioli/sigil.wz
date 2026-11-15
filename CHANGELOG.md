@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [1.0.2](https://github.com/sravioli/sigil.wz/compare/29f1dcfaa67db5586fef83ada4acaba34db18bb3..1.0.2) - 2026-11-15
+#### Performance Improvements
+- (**bootstrap**) keep plugin list across reloads - ([2e5902a](https://github.com/sravioli/sigil.wz/commit/2e5902a7b57dc972c7f5751e1d4bf22b0462071f)) - sravioli
+- (**bootstrap**) share plugin discovery snapshot - ([29f1dcf](https://github.com/sravioli/sigil.wz/commit/29f1dcfaa67db5586fef83ada4acaba34db18bb3)) - sravioli
+- (**symbols**) cache merged symbol table - ([73a9d5b](https://github.com/sravioli/sigil.wz/commit/73a9d5b3a3f831eaa7ea5ea964e6e45747ea5895)) - sravioli
+#### Documentation
+- (**readme**) update plugin READMEs - ([413dea5](https://github.com/sravioli/sigil.wz/commit/413dea5fbe538702774a131b7c4a4c8dc1289dff)) - sravioli
+- document Sigil config accessors - ([da5a6f1](https://github.com/sravioli/sigil.wz/commit/da5a6f173c776e4867b69f09b582d1121210fef6)) - sravioli
+#### Tests
+- (**symbols**) cover cache refresh and copies - ([1d4fb85](https://github.com/sravioli/sigil.wz/commit/1d4fb85af4295e00d2a4c3b9fcf1aabcbd282eb1)) - sravioli
+
+- - -
+
 ## [1.0.1](https://github.com/sravioli/sigil.wz/compare/03f45cd7df6b71c5adebc8b87d84544ca172d248..1.0.1) - 2026-05-14
 #### Documentation
 - (**github**) add pull request templates - ([09d4eac](https://github.com/sravioli/sigil.wz/commit/09d4eac9fd90127d274d6d45949f127fb5e59666)) - sravioli
