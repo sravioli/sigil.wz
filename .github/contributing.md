@@ -49,9 +49,9 @@ You need:
 3. To test the plugin locally, point your WezTerm config at the checkout:
 
    ```lua
-   local sigil = wezterm.plugin.require(
-     "file:///" .. wezterm.config_dir .. "/plugins/sigil.wz"
-   )
+   local root = wezterm.home_dir .. "/path/to/sigil.wz/plugin/"
+   package.path = root .. "?.lua;" .. root .. "?/init.lua;" .. package.path
+   local sigil = require "sigil.api"
    ```
 
    This plugin validates its options with warden.wz. Specs load it from a sibling

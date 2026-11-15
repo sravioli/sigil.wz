@@ -219,14 +219,14 @@ plugin revision, WezTerm version, and relevant custom entries.
 
 ### Local checkout
 
-Clone into `plugins/sigil.wz` beneath `wezterm.config_dir`, then replace the
-remote import:
+Load the working tree directly, so edits take effect on the next config
+reload without a commit or a plugin update. Adjust the path to your clone:
 
 ```lua
 local wezterm = require "wezterm"
-local sigil = wezterm.plugin.require(
-  "file:///" .. wezterm.config_dir .. "/plugins/sigil.wz"
-)
+local root = wezterm.home_dir .. "/path/to/sigil.wz/plugin/"
+package.path = root .. "?.lua;" .. root .. "?/init.lua;" .. package.path
+local sigil = require "sigil.api"
 ```
 
 Warp and Warden must also be available through the loader or `package.path`.
