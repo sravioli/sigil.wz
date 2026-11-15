@@ -156,23 +156,33 @@ function M.format(key, opts)
   return wezterm.format(M.items(key, opts))
 end
 
+local merged_symbols, merged_for, merged_from
+
+---Defaults merged with configured symbols, rebuilt only when the config
+---or its `symbols` table is replaced. Callers must not mutate the result.
+---@return table
+local function merged()
+  local cfg = config.get()
+  if merged_for ~= cfg or merged_from ~= cfg.symbols then
+    merged_symbols =
+      tbl.merge("force", tbl.deepcopy(defaults.symbols), tbl.deepcopy(cfg.symbols or {}))
+    merged_for, merged_from = cfg, cfg.symbols
+  end
+  return merged_symbols
+end
+
 ---Return a symbol by dotted path, such as `Sep.tb.left`.
 ---@param path string
 ---@return any
 function M.symbol(path)
-  local symbols =
-    tbl.merge("force", tbl.deepcopy(defaults.symbols), tbl.deepcopy(config.get().symbols or {}))
-  return get_path(path, symbols)
+  local value = get_path(path, merged())
+  return type(value) == "table" and tbl.deepcopy(value) or value
 end
 
 ---Return all configured symbols.
 ---@return table
 function M.symbols()
-  return tbl.merge(
-    "force",
-    tbl.deepcopy(defaults.symbols),
-    tbl.deepcopy(config.get().symbols or {})
-  )
+  return tbl.deepcopy(merged())
 end
 
 ---Return all registered entries.
