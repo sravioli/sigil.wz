@@ -4,7 +4,7 @@ local config = require "sigil.config"
 local core = require "sigil.core"
 
 ---@class Sigil.Api
----@field config table Configuration module.
+---@field config Sigil.ConfigModule Configuration module.
 local M = {
   config = config,
 }

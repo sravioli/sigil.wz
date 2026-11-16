@@ -6,6 +6,7 @@ local registry = require "sigil.registry"
 local tbl = require("sigil.deps").warp.table
 local wezterm = require "wezterm" --[[@as Wezterm]]
 
+---@class Sigil.Core
 local M = {
   initialized = false,
 }

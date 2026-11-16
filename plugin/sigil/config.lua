@@ -20,6 +20,7 @@ local tbl = deps.warp.table
 ---@field reset boolean
 ---@field padding false|"left"|"right"|"both"|boolean
 
+---@class Sigil.ConfigModule
 local M = {}
 
 ---@type Sigil.Config
