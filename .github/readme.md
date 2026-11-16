@@ -22,8 +22,8 @@ catalog supplies folders, separators, mode labels, battery levels, and clocks.
 Requires **WezTerm [`20230320-124340-559cb7b0`](https://wezterm.org/config/lua/wezterm.plugin/require.html)
 or newer** and Git. Automatically loads [warp.wz](https://github.com/sravioli/warp.wz) and
 [warden.wz](https://github.com/sravioli/warden.wz), preferring local API
-modules; dependency failure raises. Invalid options are logged and ignored.
-Use a suitable font for Nerd Font glyphs; unavailable glyph keys fall back
+modules. Dependency failure raises. Invalid options are logged and ignored.
+Use a suitable font for Nerd Font glyphs. Unavailable glyph keys fall back
 to text. Ribbon is an optional consumer, not a dependency.
 
 ### Install and run
@@ -60,7 +60,7 @@ local color = sigil.color "docker"
 ```
 
 Lookup trims whitespace, takes the basename, lowercases it, and resolves
-registered aliases. Known `.exe` names are aliases; arbitrary extensions are
+registered aliases. Known `.exe` names are aliases. Arbitrary extensions are
 not stripped. An entry has `key`, optional `name`, required `icon`, optional
 `color`, and optional `aliases`.
 
@@ -96,7 +96,7 @@ wezterm.log_info(folder .. separator)
 ```
 
 Symbols use dotted paths, separate from program lookup. Paths may return a
-glyph or a group table; unknown paths return `nil`. The
+glyph or a group table. Unknown paths return `nil`. The
 [symbol source](../plugin/sigil/defaults/symbols.lua) lists groups including
 `Modes`, `Lantern`, `Sep`, `Bat`, `Nums`, and `Clock`.
 
@@ -117,17 +117,17 @@ sigil.setup {
 
 ### Options
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `fallback.enabled` | `boolean` | `true` | Return a fallback entry for unknown names. |
-| `fallback.icon` | `string` | `"?"` | Missing-entry glyph. |
-| `fallback.color` | `string` | `"#a6adc8"` | Missing-entry foreground. |
-| `fallback.name` | `string` | `"Unknown"` | Missing-entry label. |
-| `formatting.reset` | `boolean` | `true` | Append `ResetAttributes` to formatted icons. |
-| `formatting.padding` | `boolean\|"left"\|"right"\|"both"` | `false` | Surround icons with spaces; `true` means `"both"`. |
-| `overrides` | `table<string, Sigil.Entry>` | `{}` | Partial entries merged into defaults; unknown keys can introduce entries with a required `icon`. |
-| `symbols` | `table<string, any>` | `{}` | Nested overrides/additions to the separate symbol catalog. |
-| `validate` | `boolean` | `true` | Check options with [warden.wz](https://github.com/sravioli/warden.wz). Set `false` to skip checks and never load warden. |
+| Option               | Type                               | Default     | Description                                                                                                              |
+| -------------------- | ---------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `fallback.enabled`   | `boolean`                          | `true`      | Return a fallback entry for unknown names.                                                                               |
+| `fallback.icon`      | `string`                           | `"?"`       | Missing-entry glyph.                                                                                                     |
+| `fallback.color`     | `string`                           | `"#a6adc8"` | Missing-entry foreground.                                                                                                |
+| `fallback.name`      | `string`                           | `"Unknown"` | Missing-entry label.                                                                                                     |
+| `formatting.reset`   | `boolean`                          | `true`      | Append `ResetAttributes` to formatted icons.                                                                             |
+| `formatting.padding` | `boolean\|"left"\|"right"\|"both"` | `false`     | Surround icons with spaces. `true` means `"both"`.                                                                       |
+| `overrides`          | `table<string, Sigil.Entry>`       | `{}`        | Partial entries merged into defaults. Unknown keys can introduce entries with a required `icon`.                         |
+| `symbols`            | `table<string, any>`               | `{}`        | Nested overrides/additions to the separate symbol catalog.                                                               |
+| `validate`           | `boolean`                          | `true`      | Check options with [warden.wz](https://github.com/sravioli/warden.wz). Set `false` to skip checks and never load warden. |
 
 The full entry shape is in [registry.lua](../plugin/sigil/registry.lua).
 Per-call `get`/`icon`/`color` options accept `fallback?`.
@@ -136,10 +136,10 @@ types as the global formatting options.
 
 #### Option validation
 
-Options are checked against a schema when you call setup. Invalid fields are logged and ignored, and the rest still apply; unknown keys in fixed sections log a warning.
-Set `validate = false` once your configuration is stable: warden is then never
-downloaded or loaded, and the options are used exactly as written, so typos and
-wrong types go unnoticed.
+Options are checked against a schema when you call setup. Invalid fields are logged and ignored, and the rest still apply. Unknown keys in fixed sections log a warning.
+Set `validate = false` once your configuration is stable. Sigil then never
+downloads or loads warden, and uses the options exactly as written. Typos and
+wrong types then go unnoticed.
 
 ```lua
 sigil.setup { validate = false }
@@ -148,7 +148,7 @@ sigil.setup { validate = false }
 ### Behavior and precedence
 
 `setup` starts from fresh defaults, deep-merges options, and rebuilds the
-registry. Repeating it discards previous runtime `add` entries; add them again
+registry. Repeating it discards previous runtime `add` entries. Add them again
 after setup. Configuration and custom entries do not persist across reloads.
 
 Maps merge recursively and lists replace, including an entry's `aliases`
@@ -156,7 +156,7 @@ list. An empty list can remove the configured alias list, but the canonical
 lookup remains. Per-call `fallback`, `padding`, and `reset` override their
 global values, including explicit `false`.
 
-Sigil does not validate settings or entry data against a schema.
+Sigil does not check settings or entry data against a schema.
 Supply valid color strings and an `icon` for new entries. Registration
 overwrites conflicting aliases, so avoid sharing an alias between entries.
 Updating an entry with `add` does not clean up old alias
@@ -169,24 +169,16 @@ Missing entries with fallback disabled produce `nil` from lookup helpers,
 
 ## API reference
 
+The [API reference](../docs/api.md) lists every function, method, and value
+with its parameters and return values. It is generated from the LuaLS
+annotations in `plugin/`, so it matches the code. It has these sections:
+
+- [sigil](../docs/api.md#sigil)
+- [sigil.config](../docs/api.md#sigilconfig)
+- [Types](../docs/api.md#types)
+
 `?` marks optional arguments or nullable results. Calls use `.`, not `:`.
 Types and current defaults live in the [source](../plugin/sigil/core.lua).
-
-| Signature → Return type | Description |
-| --- | --- |
-| `sigil.setup(options?) → Sigil.Config` | Reset options to defaults plus overrides and rebuild entries. |
-| `sigil.config.setup(options?) → Sigil.Config` | Reset configuration only; does not rebuild an already initialized entry registry. Prefer `sigil.setup`. |
-| `sigil.config.get() → Sigil.Config` | Return the live configuration table. |
-| `sigil.config.defaults() → Sigil.Config` | Return a deep copy of default settings. |
-| `sigil.add(key, entry) → Sigil.Entry` | Register/replace one complete entry, then return its copy. |
-| `sigil.get(key, options?) → Sigil.Entry?` | Resolve a normalized name/alias; optional `fallback` overrides the global switch. |
-| `sigil.icon(key, options?) → string?` | Return only the resolved glyph. |
-| `sigil.color(key, options?) → string?` | Return only the resolved color; known entries may also omit color. |
-| `sigil.items(key, options?) → Sigil.FormatItem[]` | Return format items with optional fallback, padding, and reset controls. |
-| `sigil.format(key, options?) → string` | Render `items` using `wezterm.format`. |
-| `sigil.symbol(path) → any?` | Resolve a dotted UI-symbol path in a copied, merged catalog. |
-| `sigil.symbols() → table` | Return the complete copied symbol catalog. |
-| `sigil.all() → table<string, Sigil.Entry>` | Return a deep copy of all canonical entries. |
 
 For example, `sigil.get("missing", { fallback = false })` distinguishes a
 missing entry from the default question-mark fallback. Format items reset
@@ -198,7 +190,7 @@ attributes but do not explicitly set a background.
 
 A square usually means the active font/fallback lacks the glyph. Install a
 suitable Nerd Font or override the icon with text. `"?"` can mean an unknown
-entry or a glyph key absent from your WezTerm build; inspect `get` with
+entry or a glyph key absent from your WezTerm build. Inspect `get` with
 `fallback = false` to distinguish missing registry data.
 
 ### Custom entries disappear
@@ -242,8 +234,8 @@ local sigil = wezterm.plugin.require "https://github.com/sravioli/sigil.wz"
 
 Its [Sigil definitions](https://github.com/DrKJeff16/wezterm-types/blob/main/lua/wezterm/types/plugins/sigil.lua)
 cover the main operations, but type `config` as settings rather than the
-configuration module and omit its methods. The source module is `Sigil.Api`;
-use [local annotations](../plugin/sigil/api.lua) for the API in this revision.
+configuration module and omit its methods. The source module is `Sigil.Api`.
+Use [local annotations](../plugin/sigil/api.lua) for the API in this revision.
 
 ### Checks and contributions
 
@@ -261,7 +253,7 @@ Specs mock WezTerm and Warp and load a sibling `../warden.wz` checkout. See the
 
 ## License
 
-The [code license file](../LICENSE) contains GNU GPL v2; documentation uses
+The [code license file](../LICENSE) contains GNU GPL v2. Documentation uses
 [CC BY-NC 4.0](../LICENSE-DOCS). Earlier README prose said GPL v3, which
 conflicted with the license file. This update does not change license terms
 or attribution.
