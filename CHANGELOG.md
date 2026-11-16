@@ -2,6 +2,28 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [1.1.0](https://github.com/sravioli/sigil.wz/compare/927c3a71aab35c5f6275b1f927ca55c5f3432a2c..1.1.0) - 2026-11-16
+#### Features
+- (**config**) validate options with warden - ([927c3a7](https://github.com/sravioli/sigil.wz/commit/927c3a71aab35c5f6275b1f927ca55c5f3432a2c)) - sravioli
+#### Documentation
+- (**contributing**) document the signed-commit requirement - ([495e6a2](https://github.com/sravioli/sigil.wz/commit/495e6a296462007c3754ff380b506cd0b321d193)) - sravioli
+- (**contributing**) unify guides and templates - ([85594f1](https://github.com/sravioli/sigil.wz/commit/85594f1b553217896827a0d71e244456cac95098)) - sravioli
+- (**readme**) unify badge style and add release badge - ([8a0e2a9](https://github.com/sravioli/sigil.wz/commit/8a0e2a9d4d968fe6600469e5e5564fd0d3806948)) - sravioli
+- (**readme**) document option validation and checks - ([ed483a6](https://github.com/sravioli/sigil.wz/commit/ed483a6600836089b4e305b6a67b421979b4ef6f)) - sravioli
+- document working-tree local checkout setup - ([9324187](https://github.com/sravioli/sigil.wz/commit/932418706354bdd9d10772ed3babb3d3fbcaf0e8)) - sravioli
+#### Tests
+- (**config**) cover option validation - ([60ab8fd](https://github.com/sravioli/sigil.wz/commit/60ab8fd202ed93c9fc16eb7dd10b07a7b80b5f60)) - sravioli
+#### Continuous Integration
+- (**tests**) clone warden.wz for specs - ([a6cdf81](https://github.com/sravioli/sigil.wz/commit/a6cdf819b6d0bc8eadcdcd9060416c15f5b199c4)) - sravioli
+- build the API reference from a majority of three LuaLS runs - ([72306c6](https://github.com/sravioli/sigil.wz/commit/72306c631c651d1d2e83e935a345b57272f1bb73)) - sravioli
+- update the actions to the versions Dependabot proposed - ([040e372](https://github.com/sravioli/sigil.wz/commit/040e37292e4ad34fe922594e261f2a99442a519c)) - sravioli
+- pin StyLua to 2.6.0 - ([4d75670](https://github.com/sravioli/sigil.wz/commit/4d75670d8ed1cdc5bcc27c9f4003ee41f46c3263)) - sravioli
+- fix the flaky API check and the EditorConfig rate limit - ([28ecc8b](https://github.com/sravioli/sigil.wz/commit/28ecc8be7006a298f0fa53f6c00675a923f81e61)) - sravioli
+- bump the actions group with 7 updates (#3) - ([65d7b09](https://github.com/sravioli/sigil.wz/commit/65d7b09ab2c228c8875bf2c2295eed51e9cdb1a4)) - [@sravioli](https://github.com/sravioli)
+- bump the actions group with 7 updates - ([651b5fc](https://github.com/sravioli/sigil.wz/commit/651b5fc8c738252015ff0e55c8da9dbe0d2de14e)) - dependabot[bot]
+
+- - -
+
 ## [1.0.2](https://github.com/sravioli/sigil.wz/compare/29f1dcfaa67db5586fef83ada4acaba34db18bb3..1.0.2) - 2026-11-15
 #### Performance Improvements
 - (**bootstrap**) keep plugin list across reloads - ([2e5902a](https://github.com/sravioli/sigil.wz/commit/2e5902a7b57dc972c7f5751e1d4bf22b0462071f)) - sravioli
