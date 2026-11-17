@@ -2,6 +2,23 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [1.2.0](https://github.com/sravioli/sigil.wz/compare/3a1e7fba7629e61d49f15bdf4256673a347de187..1.2.0) - 2026-11-17
+#### Features
+- wrap the nerdfonts table with a broad icon catalogue - ([27b3e2f](https://github.com/sravioli/sigil.wz/commit/27b3e2f15edb0ec3b45e526d0b4cdc200840b444)) - sravioli
+#### Bug Fixes
+- (**config**) drop only the invalid options - ([85d8027](https://github.com/sravioli/sigil.wz/commit/85d8027ad9394900c8a99e559ffe8434491b7e88)) - sravioli
+- (**registry**) match Windows .exe program names - ([56bd4cf](https://github.com/sravioli/sigil.wz/commit/56bd4cf1d32533123d87b707d56298ee50d7b1fd)) - sravioli
+#### Documentation
+- add minit.lua for reproducing bugs - ([3a1e7fb](https://github.com/sravioli/sigil.wz/commit/3a1e7fba7629e61d49f15bdf4256673a347de187)) - sravioli
+#### Continuous Integration
+- pass the release tag to the shell through env - ([9eba68a](https://github.com/sravioli/sigil.wz/commit/9eba68a34bb95f95b32255feffbb0a708b5cad33)) - sravioli
+- release from the pushed tag - ([1d36b84](https://github.com/sravioli/sigil.wz/commit/1d36b84aea4c7c707206845454286b45696013e1)) - sravioli
+- count only the plugin's own files in coverage - ([b73b2da](https://github.com/sravioli/sigil.wz/commit/b73b2dac1c9d40e7629080e85e4dbf90bbf52c53)) - sravioli
+#### Refactoring
+- (**registry**) call warp.filesystem.basename directly - ([dd4e336](https://github.com/sravioli/sigil.wz/commit/dd4e336b5f0c4797a23070c2705d945cb6a5e500)) - sravioli
+
+- - -
+
 ## [1.1.0](https://github.com/sravioli/sigil.wz/compare/927c3a71aab35c5f6275b1f927ca55c5f3432a2c..1.1.0) - 2026-11-16
 #### Features
 - (**config**) validate options with warden - ([927c3a7](https://github.com/sravioli/sigil.wz/commit/927c3a71aab35c5f6275b1f927ca55c5f3432a2c)) - sravioli
