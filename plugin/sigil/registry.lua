@@ -17,17 +17,11 @@ local M = {
   aliases = {},
 }
 
----@param value string
----@return string
-local function basename(value)
-  return filesystem.basename(value)
-end
-
 ---@param key any
 ---@return string
 function M.normalize(key)
   key = str.trim(tostring(key or ""))
-  key = basename(key):lower()
+  key = filesystem.basename(key):lower()
   -- Windows executables: `nvim.exe` is `nvim`.
   return (key:gsub("%.exe$", ""))
 end
