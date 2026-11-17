@@ -68,22 +68,6 @@ end
 
 local schema
 
----Remove the value at `path` from `t`.
----@param t table
----@param path any[]
----@return boolean removed
-local function drop(t, path)
-  local node = t
-  for i = 1, #path - 1 do
-    node = type(node) == "table" and node[path[i]] or nil
-  end
-  if type(node) ~= "table" or #path == 0 or node[path[#path]] == nil then
-    return false
-  end
-  node[path[#path]] = nil
-  return true
-end
-
 ---Log invalid fields and drop them so one typo never discards the rest.
 ---@param opts table
 ---@return table
@@ -93,21 +77,12 @@ local function sanitize(opts)
   end
   schema = schema or build_schema()
   local work = tbl.deepcopy(opts)
-  local result = schema:safe_parse(work)
-  if #result.issues > 0 or #result.warnings > 0 then
+  local result = schema:safe_parse(work, { drop_invalid = true })
+  if #(result.dropped or {}) > 0 or #result.issues > 0 or #result.warnings > 0 then
     result:log()
   end
-  for _ = 1, 32 do
-    local removed = false
-    for _, issue in ipairs(result.issues) do
-      removed = drop(work, issue.path) or removed
-    end
-    if result.ok or not removed then
-      break
-    end
-    result = schema:safe_parse(work)
-  end
-  return work
+  -- An older warden without drop_invalid returns no `input`.
+  return result.input or work
 end
 
 local current
