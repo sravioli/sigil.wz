@@ -2,6 +2,7 @@
 
 local config = require "sigil.config"
 local defaults = require "sigil.defaults"
+local glyph = require "sigil.defaults.glyph"
 local registry = require "sigil.registry"
 local tbl = require("sigil.deps").warp.table
 local wezterm = require "wezterm" --[[@as Wezterm]]
@@ -20,7 +21,12 @@ local function get_path(path, source)
     if type(current) ~= "table" then
       return nil
     end
-    current = current[part]
+    -- Array groups such as `Nums` are indexed as `Nums.3`.
+    local value = current[part]
+    if value == nil and tonumber(part) then
+      value = current[tonumber(part)]
+    end
+    current = value
   end
   return current
 end
@@ -184,6 +190,15 @@ end
 ---@return table
 function M.symbols()
   return tbl.deepcopy(merged())
+end
+
+---Return any Nerd Font glyph by its `wezterm.nerdfonts` name, such as
+---`md_folder`, or `fallback` (default `"?"`) when the name is unknown.
+---@param name string
+---@param fallback? string
+---@return string
+function M.glyph(name, fallback)
+  return glyph(name, fallback)
 end
 
 ---Return all registered entries.

@@ -18,6 +18,7 @@ M.items = core.items
 M.format = core.format
 M.symbol = core.symbol
 M.symbols = core.symbols
+M.glyph = core.glyph
 M.all = core.all
 
 return M

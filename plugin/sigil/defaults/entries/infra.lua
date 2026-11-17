@@ -90,6 +90,12 @@ return {
     color = "#326CE5",
     aliases = { "kuberlr", "k9s", "kubernetes" },
   },
+  minikube = {
+    name = "minikube",
+    icon = glyph "md_kubernetes",
+    color = "#326CE5",
+    aliases = { "kind", "k3d" },
+  },
   nginx = {
     name = "NGINX",
     icon = glyph "dev_nginx",
@@ -109,6 +115,11 @@ return {
     name = "Prometheus",
     icon = glyph "dev_prometheus",
     color = "#E6522C",
+  },
+  pulumi = {
+    name = "Pulumi",
+    icon = glyph "md_cube_outline",
+    color = "#8A3391",
   },
   terraform = {
     name = "Terraform",

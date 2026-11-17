@@ -4,16 +4,21 @@ local glyph = require "sigil.defaults.glyph"
 
 ---@type table<string, Sigil.Entry>
 return {
-  emacs = {
-    name = "Emacs",
-    icon = glyph("custom_emacs", glyph "cod_terminal"),
-    color = "#7F5AB6",
+  cursor = {
+    name = "Cursor",
+    icon = glyph "md_cursor_default",
+    color = "#000000",
   },
   datagrip = {
     name = "DataGrip",
     icon = glyph "dev_datagrip",
     color = "#21D789",
     aliases = { "datagrip64" },
+  },
+  emacs = {
+    name = "Emacs",
+    icon = glyph("custom_emacs", glyph "cod_terminal"),
+    color = "#7F5AB6",
   },
   goland = {
     name = "GoLand",
@@ -32,6 +37,17 @@ return {
     icon = glyph "dev_intellij",
     color = "#FE315D",
     aliases = { "idea", "idea64" },
+  },
+  kakoune = {
+    name = "Kakoune",
+    icon = glyph "md_feather",
+    color = "#E1A84F",
+    aliases = { "kak" },
+  },
+  lapce = {
+    name = "Lapce",
+    icon = glyph "md_lambda",
+    color = "#3B82F6",
   },
   micro = {
     name = "Micro",
@@ -78,17 +94,17 @@ return {
     icon = glyph "dev_vim",
     color = "#019833",
   },
-  vscode = {
-    name = "Visual Studio Code",
-    icon = glyph "dev_vscode",
-    color = "#007ACC",
-    aliases = { "code", "code-insiders" },
-  },
   visualstudio = {
     name = "Visual Studio",
     icon = glyph "dev_visualstudio",
     color = "#5C2D91",
     aliases = { "devenv" },
+  },
+  vscode = {
+    name = "Visual Studio Code",
+    icon = glyph "dev_vscode",
+    color = "#007ACC",
+    aliases = { "code", "code-insiders" },
   },
   webstorm = {
     name = "WebStorm",

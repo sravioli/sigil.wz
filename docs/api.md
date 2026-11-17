@@ -160,6 +160,24 @@ _Returns:_
 
 - `#1` (`table`)
 
+### sigil.glyph
+
+```lua
+sigil.glyph(name: string, fallback?: string) -> string
+```
+
+Return any Nerd Font glyph by its `wezterm.nerdfonts` name, such as
+`md_folder`, or `fallback` (default `"?"`) when the name is unknown.
+
+**Parameters:**
+
+- `name` (`string`)
+- `fallback` (`string`, optional)
+
+_Returns:_
+
+- `#1` (`string`)
+
 ### sigil.all
 
 ```lua

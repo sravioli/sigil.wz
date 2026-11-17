@@ -141,6 +141,7 @@ return {
     name = "Python",
     icon = glyph "seti_python",
     color = "#3776AB",
+    aliases = { "python3", "python2", "ipython" },
   },
   r = {
     name = "R",

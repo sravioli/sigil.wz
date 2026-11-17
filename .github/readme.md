@@ -64,8 +64,9 @@ registered aliases. Known `.exe` names are aliases. Arbitrary extensions are
 not stripped. An entry has `key`, optional `name`, required `icon`, optional
 `color`, and optional `aliases`.
 
-The registry includes terminals, editors, languages, runtimes, package managers,
-databases, infrastructure, and general tools. Use `all()` to see its current
+The registry includes terminals and shells, editors, languages, runtimes,
+package managers, databases, infrastructure, general tools, operating systems
+and Linux distributions, and GUI apps. Use `all()` to see its current
 entries.
 
 ### Add an application and render it
@@ -91,14 +92,33 @@ renderer can instead use `entry.icon` and `entry.color`.
 ```lua
 local folder = sigil.symbol "Folder"
 local separator = sigil.symbol "Sep.tb.right"
+local third = sigil.symbol "Nums.3"
 local symbols = sigil.symbols()
 wezterm.log_info(folder .. separator)
 ```
 
 Symbols use dotted paths, separate from program lookup. Paths may return a
-glyph or a group table. Unknown paths return `nil`. The
-[symbol source](../plugin/sigil/defaults/symbols.lua) lists groups including
-`Modes`, `Lantern`, `Sep`, `Bat`, `Nums`, and `Clock`.
+glyph or a group table, and a number indexes an array group. Unknown paths
+return `nil`. The [symbol source](../plugin/sigil/defaults/symbols.lua) lists
+every group:
+
+- Status bars: `Status`, `Domain`, `Process`, `Progress`, `Bat`, `Clock`,
+  `System`, `Net`, `Volume`, `Media`, `Weather`.
+- Code: `Git`, `Diagnostics`.
+- UI: `Modes`, `Lantern`, `Badge`, `Session`, `Action`, `Pane`, `Keys`, `Ui`,
+  `Palette`, `Spinner`.
+- Shapes and numbers: `Sep`, `Arrow`, `Chevron`, `Nums`, `NumsCircle`,
+  `NumsCircleOutline`, `NumsBox`, `NumsBoxOutline`.
+
+### Any other Nerd Font glyph
+
+```lua
+local glyph = sigil.glyph "md_cat"
+local safe = sigil.glyph("md_maybe_missing", "")
+```
+
+`glyph` reads `wezterm.nerdfonts` by name and returns the fallback (default
+`"?"`) when the name is unknown, so a config never indexes a missing glyph.
 
 ## Configuration
 

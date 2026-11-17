@@ -43,6 +43,43 @@ describe("sigil.wz", function()
     assert.are.equal("PostgreSQL", sigil.get("psql").name)
     assert.are.equal("Kubernetes", sigil.get("kubectl").name)
     assert.are.equal("ripgrep", sigil.get("rg").name)
+    assert.are.equal("Arch Linux", sigil.get("archlinux").name)
+    assert.are.equal("Firefox", sigil.get("firefox").name)
+  end)
+
+  it("maps keys and aliases to exactly one entry across categories", function()
+    local registry = require "sigil.registry"
+    local seen = {}
+    for _, category in ipairs {
+      "terminals",
+      "editors",
+      "languages",
+      "runtimes",
+      "package_managers",
+      "databases",
+      "infra",
+      "tools",
+      "os",
+      "apps",
+    } do
+      for key, entry in pairs(require("sigil.defaults.entries." .. category)) do
+        for _, name in ipairs { key, table.unpack(entry.aliases or {}) } do
+          name = registry.normalize(name)
+          assert.is_nil(
+            seen[name],
+            ("%s (%s) already used by %s"):format(name, key, tostring(seen[name]))
+          )
+          seen[name] = key
+        end
+      end
+    end
+  end)
+
+  it("resolves common process names", function()
+    assert.are.equal("Python", sigil.get("python3").name)
+    assert.are.equal("btop", sigil.get("top").name)
+    assert.are.equal("macOS", sigil.get("darwin").name)
+    assert.are.equal("Claude Code", sigil.get("claude").name)
   end)
 
   it("resolves newer category aliases", function()
@@ -67,6 +104,32 @@ describe("sigil.wz", function()
     assert.are.equal("nf:dev_gitlab", sigil.icon "gitlab")
     assert.are.equal("nf:custom_prettier", sigil.icon "prettier")
     assert.are.equal("nf:dev_vite", sigil.icon "vite")
+  end)
+
+  it("returns raw nerdfont glyphs with a fallback", function()
+    assert.are.equal("nf:md_folder", sigil.glyph "md_folder")
+    local nf = wezterm.nerdfonts
+    wezterm.nerdfonts = {}
+    package.loaded["sigil.defaults.glyph"] = nil
+    local fresh = require "sigil.defaults.glyph"
+    assert.are.equal("", fresh("md_missing", ""))
+    assert.are.equal("?", fresh "md_missing")
+    wezterm.nerdfonts = nf
+    package.loaded["sigil.defaults.glyph"] = nil
+  end)
+
+  it("ships status and catalogue symbols", function()
+    assert.are.equal("nf:md_console", sigil.symbol "Process")
+    assert.are.equal("nf:md_ssh", sigil.symbol "Domain.ssh")
+    assert.are.equal("nf:md_circle_slice_8", sigil.symbol "Progress.steps.8")
+    assert.are.equal("nf:md_cpu_64_bit", sigil.symbol "Status.cpu")
+    assert.are.equal("nf:dev_git_branch", sigil.symbol "Git.branch")
+    assert.are.equal("nf:cod_error", sigil.symbol "Diagnostics.error")
+    assert.are.equal("nf:md_wifi_strength_4", sigil.symbol "Net.wifi.4")
+    assert.are.equal("nf:ple_lower_right_triangle", sigil.symbol "Sep.triangle.lower_right")
+    assert.are.equal(8, #sigil.symbol "Weather.moon")
+    assert.are.equal(10, #sigil.symbol "NumsCircle")
+    assert.is_nil(sigil.symbol "Status.nope")
   end)
 
   it("returns icon and color helpers", function()

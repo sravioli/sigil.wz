@@ -9,6 +9,8 @@ local categories = {
   (require "sigil.defaults.entries.databases"),
   (require "sigil.defaults.entries.infra"),
   (require "sigil.defaults.entries.tools"),
+  (require "sigil.defaults.entries.os"),
+  (require "sigil.defaults.entries.apps"),
 }
 
 local M = {}
