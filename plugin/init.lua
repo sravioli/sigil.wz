@@ -1,9 +1,13 @@
+---@module "sigil"
+---@author sravioli
+---@license GNU-GPLv2
+
 ---@class Wezterm
 local wezterm = require "wezterm" --[[@as Wezterm]]
 local module_name = ...
 
 ---Locate this plugin_dir and add it to package.path.
----@return nil
+---@return table|nil plugin Installed plugin entry.
 local function bootstrap(refresh)
   -- selene: allow(incorrect_standard_library_use)
   local sep = package.config:sub(1, 1)
