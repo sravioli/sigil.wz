@@ -27,8 +27,9 @@ end
 ---@return string
 function M.normalize(key)
   key = str.trim(tostring(key or ""))
-  key = basename(key)
-  return key:lower()
+  key = basename(key):lower()
+  -- Windows executables: `nvim.exe` is `nvim`.
+  return (key:gsub("%.exe$", ""))
 end
 
 ---@param key string

@@ -82,7 +82,7 @@ return {
     name = "Java",
     icon = glyph "dev_java",
     color = "#E76F00",
-    aliases = { "javac", "java.exe" },
+    aliases = { "javac" },
   },
   javascript = {
     name = "JavaScript",
@@ -146,7 +146,7 @@ return {
     name = "R",
     icon = glyph "dev_r",
     color = "#276DC3",
-    aliases = { "r.exe", "rscript", "rscript.exe" },
+    aliases = { "rscript" },
   },
   ruby = {
     name = "Ruby",

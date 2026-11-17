@@ -18,7 +18,6 @@ return {
     name = "Command Prompt",
     icon = glyph "md_console_line",
     color = "#C0C0C0",
-    aliases = { "cmd.exe", "c:\\windows\\system32\\cmd.exe" },
   },
   fish = {
     name = "fish",
@@ -35,7 +34,7 @@ return {
     name = "PowerShell",
     icon = glyph "md_console",
     color = "#5391FE",
-    aliases = { "pwsh.exe", "powershell", "powershell.exe" },
+    aliases = { "powershell" },
   },
   ssh = {
     name = "SSH",
@@ -56,7 +55,7 @@ return {
     name = "Windows Terminal",
     icon = glyph "cod_terminal",
     color = "#4D76CD",
-    aliases = { "wt", "wt.exe" },
+    aliases = { "wt" },
   },
   zsh = {
     name = "Zsh",

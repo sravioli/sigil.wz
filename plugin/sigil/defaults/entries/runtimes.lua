@@ -24,6 +24,6 @@ return {
     name = "Node.js",
     icon = glyph "md_nodejs",
     color = "#339933",
-    aliases = { "node.exe", "nodejs" },
+    aliases = { "nodejs" },
   },
 }
